@@ -4,6 +4,7 @@ import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
 import Alert from "./components/Alert";
 import Loader from "./components/Loading";
+import selectors from "./contacts-selectors";
 import "./app.scss";
 
 import operations from "./reduxOperations";
@@ -73,12 +74,12 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  isMounted: state.isMounted,
-  contacts: state.contacts,
-  filter: state.filter,
-  isAlertShown: state.isAlertShown,
-  alertMessage: state.alertMessage,
-  isLoading: state.isLoading,
+  isMounted: selectors.getIsMounted(state),
+  contacts: selectors.getContacts(state),
+  filter: selectors.getFilter(state),
+  isAlertShown: selectors.getAlertShown(state),
+  alertMessage: selectors.getAlertMessage(state),
+  isLoading: selectors.getLoader(state),
 });
 
 const mapDispatchToProps = (dispatch) => {
